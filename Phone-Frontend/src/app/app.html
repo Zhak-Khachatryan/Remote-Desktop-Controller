@@ -1,0 +1,60 @@
+<main class="main" #main>
+  <link
+    href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css"
+    rel="stylesheet"
+  />
+  <div class="background"></div>
+
+  <div class="buttons">
+    <!-- Toggle Keyboard / Mouse -->
+    <button class="switch" (click)="setVariant()">
+      Switch to {{ switch ? 'Mouse' : 'Keyboard' }}
+    </button>
+
+    <!-- Keyboard -->
+    <div *ngIf="switch" class="kb">
+      <button
+        *ngFor="let key of keys"
+        [ngClass]="key"
+        (touchstart)="keyHold(key)"
+        (touchend)="keyRelease(key)"
+      >
+        {{ key }}
+      </button>
+    </div>
+
+    <!-- Mouse -->
+    <div *ngIf="!switch" class="mouse">
+      <input
+        type="range"
+        min="-60"
+        max="60"
+        [value]="slidervalue"
+        (input)="moveMouse($event.target.value)"
+      />
+      <button
+        class="acc"
+        (touchstart)="keyHold('lb')"
+        (touchend)="keyRelease('lb')"
+      >
+        Accelerate
+      </button>
+      <button
+        class="brk"
+        (touchstart)="keyHold('rb')"
+        (touchend)="keyRelease('rb')"
+      >
+        Brake
+      </button>
+    </div>
+
+    <!-- Fullscreen button -->
+    <button
+      class="fullscreen-button mdi"
+      [ngClass]="isFullscreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'"
+      (click)="fullscreen(main)"
+    ></button>
+  </div>
+
+  <router-outlet></router-outlet>
+</main>
