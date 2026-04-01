@@ -1,0 +1,17 @@
+Initialization
+
+# FRONTEND
+Start-Process powershell -ArgumentList "cd .\Phone-Frontend; npm install"
+
+# BACKEND
+Start-Process powershell -ArgumentList "cd .\PC-Backend; pip install uv; uv venv venv; .venv/Scripts/Activate; uv pip install -r requirements.txt"
+
+Execution
+
+# FRONTEND
+Start-Process powershell -ArgumentList "cd .\Phone-Frontend; ng serve --host 0.0.0.0"
+
+# BACKEND 
+Start-Process powershell -ArgumentList "cd .\PC-Backend; .venv/Scripts/Activate; python server.py"
+
+NOTE: Make sure to change the url on the Phone-Frontend/src/app/app.ts to the corresponding url in order for the Frontend to be able to successfully communicate with the Backend
