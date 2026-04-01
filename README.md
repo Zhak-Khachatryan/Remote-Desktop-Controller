@@ -35,7 +35,7 @@ It is intended to be simple, fast, and easy to understand. The codebase is also 
 Start-Process powershell -ArgumentList "cd .\Phone-Frontend; npm install"
 
 ### BACKEND
-Start-Process powershell -ArgumentList "cd .\PC-Backend; pip install uv; uv venv venv; .venv/Scripts/Activate; uv pip install -r requirements.txt"
+Start-Process powershell -ArgumentList "cd .\PC-Backend; pip install uv; uv venv .venv; .venv/Scripts/Activate; uv pip install -r requirements.txt"
 
 ## Execution
 
